@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 // classe => inputWhiteContainer (input-white) / inputOrangeContainer (input-black)
 
@@ -32,15 +32,16 @@ export function InputInfos({ logo, type, name, placeholder, classe }) {
     const [image, setImage] = useState(logo)
     const [genre, setGenre] = useState(type)
 
-    // const  overView  = <img src="src/assets/logo/overViewLogo.svg" />;
+    const overView = "src/assets/logo/overViewLogo.svg"
     // console.log(overView)
 
     const showPass = () => {
         if (genre === "password") {
             setGenre("text")
-            // setImage(overView)
+            setImage(overView)
         } else {
             setGenre(type)
+            setImage(logo)
         }
     }
     return (

@@ -2,6 +2,7 @@ import React from 'react'
 import Texte from '../component/text/text'
 import { BtnPrivate, ButtonWhite } from '../component/button/button'
 import { InputEmail } from '../component/input/input'
+import RatingTest from '../component/stars component/Rating'
 
 function Home() {
     return (
@@ -83,7 +84,7 @@ function Home() {
                         />
                         <div className="item">
                             <img src="src/assets/picture/burger.svg" alt="" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Chees burger"}
                                 as={"h4"}
@@ -92,7 +93,7 @@ function Home() {
                         </div>
                         <div className="item">
                             <img src="src/assets/picture/chees.svg" alt="" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Mac & Cheesr"}
                                 as={"h4"}
@@ -101,7 +102,7 @@ function Home() {
                         </div>
                         <div className="item">
                             <img src="src/assets/picture/chees.svg" alt="" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Salad ceasar with chiken"}
                                 as={"h4"}
@@ -120,7 +121,7 @@ function Home() {
                         />
                         <div className="item">
                             <img src="src/assets/picture/caramel.svg" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Caramel pots"}
                                 as={"h4"}
@@ -129,7 +130,7 @@ function Home() {
                         </div>
                         <div className="item">
                             <img src="src/assets/picture/chesseCake.svg" alt="" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Cheescake"}
                                 as={"h4"}
@@ -138,7 +139,7 @@ function Home() {
                         </div>
                         <div className="item">
                             <img src="src/assets/picture/caramel.svg" alt="" />
-                            <img src="src/assets/logo/starsIcons.svg" alt="" />
+                            <RatingTest />
                             <Texte
                                 content={"Japanes pancake"}
                                 as={"h4"}

@@ -17,6 +17,8 @@ import ProfilPicture from '../component/profileChildAnd Component/ProfilPicture'
 import ProfilPageNav from '../component/profileChildAnd Component/ProfilPageNav'
 import CullinaryPreferenceForm from '../component/profileChildAnd Component/CullinaryPreferenceForm'
 import RecipeComponent from '../component/profileChildAnd Component/RecipeComponent'
+import RatingTest from '../component/stars component/Rating'
+import ErrorPage from './ErrorPage'
 
 function GUI() {
 
@@ -82,6 +84,10 @@ function GUI() {
             <CullinaryPreferenceForm />
             <br />
             <RecipeComponent />
+            <br />
+            <RatingTest />
+            <br />
+            <ErrorPage />
             <div>
                 <Outlet />
             </div>

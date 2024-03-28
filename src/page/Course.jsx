@@ -1,8 +1,20 @@
 import React from 'react'
 import Texte from '../component/text/text'
 import { BtnCourseCreation, BtnPrivate, ButtonWhite } from '../component/button/button'
+import RatingTest from '../component/stars component/Rating'
+// import { UserService } from '../service/userService'
 
 function Course() {
+    // const userService = new UserService();
+
+    // const handleSubmit = async () => {
+    //     try {
+    //         const res = await UserService.createUser(data);
+    //         return res;
+    //     } catch (error) {
+    //         throw Error(error.message);
+    //     }
+    // }
     const arrCourse = [1, 2, 3]
     return (
         <div className="course-page">
@@ -82,7 +94,7 @@ function Course() {
                                 >
                                     <div className="course">
                                         <img src="src/assets/course image/apricot.svg" />
-                                        <img src="src/assets/logo/starsIcons.svg" />
+                                        <RatingTest />
                                         <Texte
                                             content={"Apricot Danish"}
                                             as={"h4"}
@@ -91,7 +103,7 @@ function Course() {
                                     </div>
                                     <div className="course">
                                         <img src="src/assets/course image/kaibi.svg" />
-                                        <img src="src/assets/logo/starsIcons.svg" />
+                                        <RatingTest />
                                         <Texte
                                             content={"Kalbi Korean"}
                                             as={"h4"}
@@ -101,7 +113,7 @@ function Course() {
 
                                     <div className="course">
                                         <img src="src/assets/course image/chow.svg" />
-                                        <img src="src/assets/logo/starsIcons.svg" />
+                                        <RatingTest />
                                         <Texte
                                             content={"Chow mein"}
                                             as={"h4"}
@@ -110,7 +122,7 @@ function Course() {
                                     </div>
                                     <div className="course">
                                         <img src="src/assets/course image/ssq.svg" />
-                                        <img src="src/assets/logo/starsIcons.svg" />
+                                        <RatingTest />
                                         <Texte
                                             content={"BBQ"}
                                             as={"h4"}
@@ -119,7 +131,7 @@ function Course() {
                                     </div>
                                     <div className="course">
                                         <img src="src/assets/course image/barbecue.svg" />
-                                        <img src="src/assets/logo/starsIcons.svg" />
+                                        <RatingTest />
                                         <Texte
                                             content={"Barbecue sea food"}
                                             as={"h4"}

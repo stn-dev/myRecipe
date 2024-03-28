@@ -350,6 +350,9 @@ font-weight: 400;
 .logo {
     width: 150px;
     height: 120px;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
          /* all the navBar component */
@@ -1718,6 +1721,67 @@ font-weight: 400;
     }
 }
 
+}
+
+
+
+    /* error page */
+
+
+.errorPage {
+    width: 80%;
+    min-height: 600px;
+    padding: 20px 10px;
+    margin: auto;
+    position: relative;
+    .messageContainer {
+        width: 50%;
+        min-height: 300px;
+        @extend %flex;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        left: 180px;
+        h2 {
+            font-size: 60px;
+            font-weight: 600;
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p {
+            @extend %flex;
+            gap: 5px;
+            span  {
+                @extend %primColor;
+                font-weight: 700;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        } 
+        .errorMessage {
+            @extend %flex;
+            flex-direction: column;
+            gap: 10px;
+            h3 {
+                font-size: 15px;
+                font-weight: 600;
+                color: red;
+            }
+        }
+    }
+  
+    .cuistotImage {
+        width: 500px;
+        height: 600px;
+        background-image: url(./assets/picture/imageFornErrorPage.png);
+        @extend %backgroundImage;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
 }
 
             // admin sidebar component //

@@ -1,5 +1,5 @@
 
-import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Link, NavLink, useParams, useLocation } from 'react-router-dom'
+import { Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Link, NavLink, useParams, useLocation, useNavigate } from 'react-router-dom'
 import Home from './page/Home'
 import Categories from './page/Categories'
 import MealPlanner from './page/MealPlanner'
@@ -26,14 +26,22 @@ import CullinarryPreference from './page/profilPageChild/CulinarryPreference'
 import MyRecipePage from './page/profilPageChild/MyRecipePage'
 import AdminPage from './page/AdminPage'
 import NavbarForAdmin from './layout/navbar/NavbarForAdmin'
+import ErrorPage from './page/ErrorPage'
 
 
 const Root = () => {
 
+  // test route guard 
+  const navigate = useNavigate()
+  const [guard, setguard] = useState(false)
+
+  const { pathname } = useLocation()
+
+
   let footer = true;
   let guiNav = true;
 
-  const { pathname } = useLocation()
+
   if (
     pathname == "/login" ||
     pathname == "/singUp" ||
@@ -74,7 +82,10 @@ const Root = () => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Root />} >
+    <Route path='/'
+      element={<Root />}
+      errorElement={<ErrorPage />}
+    >
       <Route index element={<Home />} />
       <Route path='/categorie' element={<Categories />} />
 
