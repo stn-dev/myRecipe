@@ -1733,15 +1733,19 @@ font-weight: 400;
     min-height: 600px;
     padding: 20px 10px;
     margin: auto;
+    margin-top: 50px;
     position: relative;
+    @extend %flex;
+    background-color: #e8e8e8;
+    border-radius: 20px;
     .messageContainer {
         width: 50%;
         min-height: 300px;
         @extend %flex;
         flex-direction: column;
         gap: 15px;
-        position: absolute;
-        left: 180px;
+        // position: absolute;
+        // left: 180px;
         h2 {
             font-size: 60px;
             font-weight: 600;
@@ -1778,9 +1782,9 @@ font-weight: 400;
         height: 600px;
         background-image: url(./assets/picture/imageFornErrorPage.png);
         @extend %backgroundImage;
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
+        // position: absolute;
+        // right: 10px;
+        // bottom: 10px;
     }
 }
 
