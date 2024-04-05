@@ -2,7 +2,33 @@ import React from 'react'
 import { InputForm, InputInfos } from '../component/input/input'
 import GoogleConection from '../component/google/GoogleConection'
 import { ButtonWhite } from '../component/button/button'
-import { Link } from 'react-router-dom'
+import { Form, Link, useNavigate } from 'react-router-dom'
+import { UserService } from '../service/userService'
+
+export const singUpAction = async ({ request }) => {
+
+    try {
+        const dataForm = await request.formData()
+
+        const data = Object.fromEntries(dataForm)
+
+        // const data = {
+        //     userName: dataForm.get("userName"),
+        //     email: dataForm.get("mail"),
+        //     passsword: dataForm.get("password")
+        // }
+        console.log(data)
+
+        const postUser = await UserService.createUser(data)
+
+        console.log(postUser)
+
+        return data;
+
+    } catch (error) {
+        throw Error(error.message)
+    }
+}
 
 function SingUpPage() {
     return (
@@ -12,7 +38,10 @@ function SingUpPage() {
                 <h2>Sing up FOR FOOD RECIPE</h2>
                 <GoogleConection />
                 <h5>Or</h5>
-                <form >
+                <Form
+                    method='POST'
+                    action=''
+                >
                     <div>
                         <InputInfos
                             classe={"inputFormName"}
@@ -30,21 +59,21 @@ function SingUpPage() {
                     </div>
                     <InputInfos
                         classe={"inputFormContainer"}
-                        name={"userName"}
+                        name={"username"}
                         type={"text"}
                         placeholder={"User name"}
                     />
 
                     <InputInfos
                         type={"email"}
-                        name={"mail"}
+                        name={"email"}
                         placeholder={"E-mail"}
                         classe={"inputFormContainer"} />
 
                     <InputInfos
                         logo={"src/assets/logo/hidePassword.svg"}
                         type={"password"}
-                        name={"passsword"}
+                        name={"password"}
                         placeholder={"password"}
                         classe={"inputFormContainer"} />
                     <p>By creating an account, you agree to our  <span>Terms of use</span> and
@@ -54,14 +83,14 @@ function SingUpPage() {
                     </p>
                     <ButtonWhite
                         type={"submit"}
-                        content={"sing up"}
+                        content={"sign up"}
                         classe={"white-btn"} />
                     <h6>
                         already have an acount ? <Link to="/login">
                             <span>Login</span>
                         </Link>
                     </h6>
-                </form>
+                </Form>
 
             </div>
         </div>

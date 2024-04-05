@@ -14,7 +14,7 @@ function NavbarForAdmin() {
             />
             <h4>Other menu</h4>
             <div className="notif">
-                <img src="/src/assets/notifAdlmin.svg" alt="" />
+                <img src="src/assets/notifAdlmin.svg" alt="" />
                 <img src="src/assets/alert.svg" alt="" />
                 <h5>Allergic alert</h5>
             </div>

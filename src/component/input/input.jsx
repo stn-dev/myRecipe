@@ -54,6 +54,7 @@ export function InputInfos({ logo, type, name, placeholder, classe }) {
                 type={genre}
                 name={name}
                 placeholder={placeholder}
+
             />
         </div>
     )

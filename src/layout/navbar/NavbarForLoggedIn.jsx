@@ -7,7 +7,7 @@ function NavbarForLoggedIn() {
     const navigate = useNavigate()
 
     const goToProfilePage = () => {
-        navigate("/profil")
+        navigate("/auth/profil")
     }
     return (
         <nav className='loggedInNav'>
@@ -18,7 +18,7 @@ function NavbarForLoggedIn() {
                 </NavLink>
                 <NavLink to="categorie" >
                     <li>Categories
-                        <img src="./src/assets/arrowDown.svg" alt="" />
+                        <img src="src/assets/arrowDown.svg" alt="" />
                     </li>
                 </NavLink>
                 <NavLink to="mealPlanner" >
@@ -40,7 +40,11 @@ function NavbarForLoggedIn() {
                     onClick={goToProfilePage}
                 ></div>
                 <div className='notification'></div>
-                <ButtonWhite content={"Log out"} classe={"white-btn"} />
+                <ButtonWhite
+                    content={"Log out"}
+                    classe={"white-btn"}
+                    type={"reset"}
+                />
             </div>
         </nav>
     )

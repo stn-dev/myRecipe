@@ -5,15 +5,16 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 export function ButtonWhite({ content, classe, type }) {
     const navigate = useNavigate()
-    const handleClick = (e) => {
-        if (type == "submit") {
-            e.preventDefault()
-        }
+    const handleClick = () => {
+        // if (type == "submit") {
+        //     e.preventDefault()
+        // }
         if (content == "Login") {
-            navigate("login")
+            navigate("/login")
         } if (content == "Sing up" || content == "Sing in") {
-            navigate("singUp")
+            navigate("/singUp")
         } if (content == "Log out") {
+            localStorage.clear()
             navigate("/")
         } if (content == "Breakfast") {
             navigate('/mealPlannerBreakFast')

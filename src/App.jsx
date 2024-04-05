@@ -8,8 +8,8 @@ import Contact from './page/Contact'
 import Course from './page/Course'
 import NavbarWhithSearch from './layout/navbar/NavbarWhithSearch'
 import GUI from './page/GUI'
-import LoginPage from './page/LoginPage'
-import SingUpPage from './page/SingUpPage'
+import LoginPage, { LoginAction } from './page/LoginPage'
+import SingUpPage, { singUpAction } from './page/SingUpPage'
 import NavbarForLoggedInWithSearch from './layout/navbar/NavbarForLoggedInWithSearch'
 import NavBar from './layout/navbar/NavBarNoSearch'
 import Footer from './layout/navbar/footer/Footer'
@@ -19,7 +19,7 @@ import Lunch from './page/meal planner children/Lunch'
 import Dinner from './page/meal planner children/Dinner'
 import Snack from './page/meal planner children/Snack'
 import Logo from './component/logo/logo'
-import CourseCreation from './page/course creation /CourseCreation'
+import CourseCreation, { courseCreationAction } from './page/course creation /CourseCreation'
 import ProfilPage from './page/ProfilPage'
 import CullinaryPreferenceForm from './component/profileChildAnd Component/CullinaryPreferenceForm'
 import CullinarryPreference from './page/profilPageChild/CulinarryPreference'
@@ -27,48 +27,47 @@ import MyRecipePage from './page/profilPageChild/MyRecipePage'
 import AdminPage from './page/AdminPage'
 import NavbarForAdmin from './layout/navbar/NavbarForAdmin'
 import ErrorPage from './page/ErrorPage'
+import Auth from './component/route guard/Auth'
 
 
 const Root = () => {
 
-  // test route guard 
-  const navigate = useNavigate()
-  const [guard, setguard] = useState(false)
+  // i can't use useState here 
+
+
+  // const [guard, setguard] = useState(false)
 
   const { pathname } = useLocation()
 
 
   let footer = true;
-  let guiNav = true;
+  let guard = false
 
 
+  if (localStorage.getItem("token")) {
+    guard = true
+  }
   if (
-    pathname == "/login" ||
-    pathname == "/singUp" ||
-    pathname == '/mealPlannerBreakFast' ||
-    pathname == '/mealPlannerLunch' ||
-    pathname == '/mealPlannerDinner' ||
-    pathname == '/mealPlannerSnack' ||
-    pathname == '/CourseCreation'
+    (pathname == "/login" ||
+      pathname == "/singUp" ||
+      pathname == '/mealPlannerBreakFast' ||
+      pathname == '/mealPlannerLunch' ||
+      pathname == '/mealPlannerDinner' ||
+      pathname == '/mealPlannerSnack' ||
+      pathname == '/CourseCreation' ||
+      guard == false) &&
+    pathname !== "/"
   ) {
     footer = false
-  } if (pathname == "/GUI") {
-    guiNav = false
   }
+
 
   return (
     <>
       <header>
         <nav>
           {
-            pathname == "/admin" ? <NavbarForAdmin />
-              :
-              (pathname == "/profil" ? <NavbarForLoggedInWithSearch />
-                :
-                (pathname == "/categorie" ?
-                  <NavBar />
-                  : (guiNav && <NavbarWhithSearch
-                    logo={<Logo />} />)))
+            guard ? <NavbarForLoggedInWithSearch /> : <NavbarWhithSearch />
           }
         </nav>
       </header>
@@ -87,43 +86,59 @@ const router = createBrowserRouter(
       errorElement={<ErrorPage />}
     >
       <Route index element={<Home />} />
-      <Route path='/categorie' element={<Categories />} />
 
-      {/* meal planner page and children page  */}
-      <Route path='/mealPlanner' element={<MealPlanner />} />
-      <Route path='/mealPlannerBreakFast' element={<BreakFast />} />
-      <Route path='/mealPlannerLunch' element={<Lunch />} />
-      <Route path='/mealPlannerDinner' element={<Dinner />} />
-      <Route path='/mealPlannerSnack' element={<Snack />} />
+      {/* route protected  */}
+      <Route path='/' element={<Auth />} >
 
+        <Route path='/categorie' element={<Categories />} />
 
-      <Route path='/about' element={<About />} />
-      <Route path='/contact' element={<Contact />} />
+        {/* meal planner page and children page  */}
+        <Route path='/mealPlanner' element={<MealPlanner />} />
+        <Route path='/mealPlannerBreakFast' element={<BreakFast />} />
+        <Route path='/mealPlannerLunch' element={<Lunch />} />
+        <Route path='/mealPlannerDinner' element={<Dinner />} />
+        <Route path='/mealPlannerSnack' element={<Snack />} />
 
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
 
-      {/* course page and children  */}
-      <Route path='/course' element={<Course />} />
-      <Route path='/CourseCreation' element={<CourseCreation />} />
+        {/* course page and children  */}
+        <Route path='/course' element={<Course />} />
+        <Route
+          path='/CourseCreation'
+          element={<CourseCreation />}
+          action={courseCreationAction}
+        />
 
+        <Route path='/GUI' element={<GUI />} />
 
-      <Route path='/GUI' element={<GUI />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/singUp' element={<SingUpPage />} />
+        {/* profil page and children  */}
+        <Route path='/profil' element={<ProfilPage />} />
+        <Route
+          path='/profilCullinaryPreference'
+          element={<CullinarryPreference />}
+        />
+        <Route
+          path='/profilMyRecipe'
+          element={<MyRecipePage />}
+        />
 
+        <Route path='/admin' element={<AdminPage />} />
 
-      {/* profil page and children  */}
-      <Route path='/profil' element={<ProfilPage />} />
+      </Route>
+
       <Route
-        path='/profilCullinaryPreference'
-        element={<CullinarryPreference />}
+        path='/login'
+        element={<LoginPage />}
+        action={LoginAction}
       />
       <Route
-        path='/profilMyRecipe'
-        element={<MyRecipePage />}
+        path='/singUp'
+        element={<SingUpPage />}
+        errorElement={<ErrorPage />}
+        action={singUpAction}
       />
 
-
-      <Route path='/admin' element={<AdminPage />} />
     </Route>
   )
 )

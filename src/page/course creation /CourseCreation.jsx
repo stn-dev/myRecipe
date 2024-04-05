@@ -3,6 +3,21 @@ import { Form, useNavigate } from 'react-router-dom'
 import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
+import { CousrseService } from '../../service/courseService'
+
+export const courseCreationAction = async ({ requseet }) => {
+    const course = await requseet.formData()
+    const data = Object.fromEntries(course)
+
+    const id = {
+        author: localStorage.getItem("id").toString()
+    }
+
+    const setCourse = await CousrseService.postCourse(...data, ...id)
+    console.log(setCourse)
+
+    return data;
+}
 
 function CourseCreation() {
     const navigate = useNavigate()
@@ -15,7 +30,9 @@ function CourseCreation() {
                 />
                 Creation Of Course
             </h2>
-            <Form>
+            <Form
+                method='POST'
+            >
                 <div className="courseForms">
 
                     {/* left side of the form  */}
@@ -23,23 +40,23 @@ function CourseCreation() {
                     <div className="leftSide">
                         <div className="courseForm">
                             <Texte
-                                content={"Categories"}
+                                content={"Name"}
                                 as={"h4"}
                             />
                             <InputInfos
                                 logo={"src/assets/arrowDown.svg"}
-                                name={"Categories"}
+                                name={"name"}
                                 placeholder={"Ex: Asiatique"}
                                 classe={"inputInfoContainer"}
                             />
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Name "}
+                                content={"Title "}
                                 as={"h4"}
                             />
                             <InputInfos
-                                name={"Name "}
+                                name={"title "}
                                 placeholder={"Ex: Chocolate chip cookies"}
                                 classe={"inputInfoContainer"}
                             />
@@ -57,12 +74,12 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Utensil*"}
+                                content={"privacy"}
                                 as={"h4"}
                             />
                             <InputInfos
                                 logo={"src/assets/arrowDown.svg"}
-                                name={"Utensil*"}
+                                name={"privacy"}
                                 placeholder={"Ex: pan, bowl ..."}
                                 classe={"inputInfoContainer"}
                             />
@@ -78,7 +95,7 @@ function CourseCreation() {
                                 as={"h4"}
                             />
                             <textarea
-                                name="Description of course"
+                                name="Description"
                                 cols="20"
                                 rows="5"
                             >
@@ -88,11 +105,11 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Video"}
+                                content={"link"}
                                 as={"h4"}
                             />
                             <InputInfos
-                                name={"Video"}
+                                name={"link"}
                                 placeholder={"Link"}
                                 classe={"inputInfoContainer"}
                             />

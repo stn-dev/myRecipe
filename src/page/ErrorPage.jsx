@@ -16,13 +16,13 @@ function ErrorPage() {
                 <p>
                     Try to login here
                     <span
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate("/login")}
                     >
                         login
                     </span>
                     , or go back to home
                     <span
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/")}
                     >
                         Home
                     </span>
