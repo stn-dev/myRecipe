@@ -3,20 +3,31 @@ import { Form, useNavigate } from 'react-router-dom'
 import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
-import { CousrseService } from '../../service/courseService'
+import { CourseService } from '../../service/courseService'
 
-export const courseCreationAction = async ({ requseet }) => {
-    const course = await requseet.formData()
-    const data = Object.fromEntries(course)
+export const courseCreationAction = async ({ request }) => {
+    try {
+        const course = await request.formData()
+        const data = Object.fromEntries(course)
 
-    const id = {
-        author: localStorage.getItem("id").toString()
+        const id = {
+            author: localStorage.getItem("id")
+        }
+
+        const isData = { ...data, ...id }
+
+        console.log(isData)
+
+        const setCourse = await CourseService.postCourse(isData)
+        console.log(setCourse)
+
+        return null;
+
+    } catch (error) {
+        console.log(error.message)
     }
 
-    const setCourse = await CousrseService.postCourse(...data, ...id)
-    console.log(setCourse)
 
-    return data;
 }
 
 function CourseCreation() {
@@ -52,11 +63,11 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Title "}
+                                content={"Title"}
                                 as={"h4"}
                             />
                             <InputInfos
-                                name={"title "}
+                                name={"title"}
                                 placeholder={"Ex: Chocolate chip cookies"}
                                 classe={"inputInfoContainer"}
                             />
@@ -95,7 +106,7 @@ function CourseCreation() {
                                 as={"h4"}
                             />
                             <textarea
-                                name="Description"
+                                name="description"
                                 cols="20"
                                 rows="5"
                             >

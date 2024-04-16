@@ -3,67 +3,41 @@ import NavbarWhithSearch from '../layout/navbar/NavbarWhithSearch'
 import GoogleConection from '../component/google/GoogleConection'
 import { InputInfos } from '../component/input/input'
 import { ButtonWhite } from '../component/button/button'
-import { Link, Form, useNavigate } from 'react-router-dom'
-import { UserService } from '../service/userService'
+import { Link, Form, useNavigate, redirect } from 'react-router-dom'
+import { UserService } from '../service/userService';
 
 
 
 export const LoginAction = async ({ request }) => {
+
     try {
-        // const navigate = useNavigate()
+
 
         const formData = await request.formData()
-        const data = Object.fromEntries(formData)
+        const datas = Object.fromEntries(formData)
+        console.log(datas)
 
-        const toLogin = await UserService.loginUser(data)
-        console.log(data)
-        console.log(toLogin)
+        const toLog = await UserService.loginUser(datas)
+        console.log(toLog)
 
-        const token = toLogin.data.token;
-        const refreshToken = toLogin.data.refreshToken;
-        const id = toLogin.data.user._id;
+        const token = toLog.data.token;
+        const refresh = toLog.data.refreshToken;
+        const id = toLog.data.user._id;
 
         if (token) {
-            toLogin.config.headers.Authorization = `Bearer ${token}`
-
             localStorage.setItem("token", token)
         }
-        if (refreshToken) {
-            localStorage.setItem("refreshToken", refreshToken)
+        if (refresh) {
+            localStorage.setItem("refreshToken", refresh)
         }
         if (id) {
             localStorage.setItem("id", id)
         }
 
-        if (toLogin.status == 200 ||
-            toLogin.status == 201
-        ) {
-            // navigate("/")
-            alert("you are succesfully logged in")
-        } if (toLogin.status == 401) {
-            // navigate("/login")
-            alert("you are not logged in , verify your username and password or try to sing up")
-        }
-
-        return data;
+        return redirect("/");
 
     } catch (error) {
-        if (error.status == 401 && localStorage.getItem("token")) {
-            try {
-                const toRefresh = async () => {
-                    const res = await UserService.getRefreshToken()
-
-                    if (res.token) {
-                        toLogin.headers.Authorization = `Bearer ${res.token}`
-                    }
-                }
-            } catch (error) {
-                console.error(error.message)
-            }
-        }
-        else {
-            console.error(error.message)
-        }
+        console.log(error.message)
     }
 }
 

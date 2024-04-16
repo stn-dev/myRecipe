@@ -2,7 +2,7 @@ import React from 'react'
 import { InputForm, InputInfos } from '../component/input/input'
 import GoogleConection from '../component/google/GoogleConection'
 import { ButtonWhite } from '../component/button/button'
-import { Form, Link, useNavigate } from 'react-router-dom'
+import { Form, Link, redirect, useNavigate } from 'react-router-dom'
 import { UserService } from '../service/userService'
 
 export const singUpAction = async ({ request }) => {
@@ -10,23 +10,18 @@ export const singUpAction = async ({ request }) => {
     try {
         const dataForm = await request.formData()
 
-        const data = Object.fromEntries(dataForm)
+        const dataObject = Object.fromEntries(dataForm)
 
-        // const data = {
-        //     userName: dataForm.get("userName"),
-        //     email: dataForm.get("mail"),
-        //     passsword: dataForm.get("password")
-        // }
-        console.log(data)
+        console.log(dataObject)
 
-        const postUser = await UserService.createUser(data)
+        const signUpUser = await UserService.createUser(dataObject)
 
-        console.log(postUser)
+        console.log(signUpUser)
 
-        return data;
+        return signUpUser;
 
     } catch (error) {
-        throw Error(error.message)
+        console.log(error.message)
     }
 }
 

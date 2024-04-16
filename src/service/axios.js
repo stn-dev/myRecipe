@@ -1,5 +1,6 @@
 import axios from "axios"
 import { UserService } from "./userService";
+import { redirect, useLocation } from "react-router-dom";
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL
@@ -7,59 +8,103 @@ const axiosInstance = axios.create({
 
 export default axiosInstance;
 
-axiosInstance.interceptors.request.use(
-    (request) => {
-        const token = request.data.token;
-        const refreshToken = request.data.refreshToken;
+axiosInstance.interceptors.request.use((req) => {
+    const isToken = localStorage.getItem("token")
+    if (isToken) {
+        req.config.headers.Authorization = `Bearer ${isToken}`
+    }
+    return req;
 
-        console.log(request.data)
-
-        request.headers.Authorization = `Bearer ${token}`
-
-        if (token) {
-            localStorage.setItem("token", token)
-        } if (refreshToken) {
-            localStorage.setItem("refreshToken", refreshToken)
-        }
-
-        return request;
-    },
-    (eror) => {
-        return Promise.reject("unable to make request")
+},
+    (err) => {
+        return Promise.reject
     }
 )
 
-axiosInstance.interceptors.response.use(
-    async (res) => {
-        // const token = request.data.token;
-        // const refreshToken = request.data.refreshToken;
+axiosInstance.interceptors.response.use((res) => res
+    // const { pathname } = useLocation();
 
-        // console.log(token, refreshToken)
+    // console.log(pathname)
 
-        // request.headers.Authorization = `Bearer ${token}`
+    // const token = res.data.token;
+    // const refresh = res.data.refreshToken;
+    // const id = res.data.user._id;
 
-        // if (token) {
-        //     localStorage.setItem("token", token)
-        // } if (refreshToken) {
-        //     localStorage.setItem("refreshToken", refreshToken)
-        // }
-        return res
-    },
-    async error => {
-        const status = error.response ? error.response.status : null;
 
-        if (status == 401 &&
-            localStorage.getItem("token")
-        ) {
-            const refresh = await UserService.getRefreshToken(localStorage.getItem("refreshToken"))
+    // if (token) {
+    //     localStorage.setItem("token", token)
+    // }
+    // if (refresh) {
+    //     localStorage.setItem("refreshToken", refresh)
+    // }
+    // if (id) {
+    //     localStorage.setItem("id", id)
+    // }
 
-            response.headers.Authorization = `Bearer ${refresh}`
-            return null;
+    // console.log(token)
+
+
+    ,
+    async (err) => {
+        const isToken = localStorage.getItem("token")
+        const status = err.response ? err.response.status : null;
+
+        if (status == 401 && isToken) {
+            try {
+
+                const res = await UserService.getRefreshToken()
+
+                const newToken = res.token;
+
+                console.log(newToken
+                )
+
+                const token = localStorage.setItem("token", newToken)
+
+            } catch (error) {
+                console.error(error.message)
+            }
         }
-
-        return Promise.resolve("request rejected")
     }
 )
+
+
+// axiosInstance.interceptors.response.use(
+//     (res) => {
+//         const token = res.data.token;
+//         const refresh = res.data.refreshToken;
+//         const id = res.data.user._id;
+
+//         if (token) {
+//             toLogin.config.headers.Authorization = `Bearer ${token}`
+//             localStorage.setItem("token", token)
+//         }
+//         if (refreshToken) {
+//             localStorage.setItem("refreshToken", refreshToken)
+//         }
+//         if (id) {
+//             localStorage.setItem("id", id)
+//         }
+
+//         return res
+//     },
+//     (err) => {
+//         const isToken = localStorage.getItem("token")
+//         const status = err.response ? err.response.status : null;
+
+//         if (status == 401 && isToken) {
+//             try {
+//                 const toRefresh = async () => {
+//                     const res = await UserService.getRefreshToken()
+
+//                     console.log(res)
+//                 }
+//             } catch (error) {
+//                 console.error(error.message)
+//             }
+//         }
+//     }
+// )
 
 
 

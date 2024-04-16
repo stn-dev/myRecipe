@@ -1,7 +1,7 @@
-import Http from "./http";
+import { Http } from "./http";
 
 
-export class CousrseService extends Http {
+export class CourseService extends Http {
     static async getCourse() {
         try {
             const res = await this.get("course")
@@ -14,11 +14,10 @@ export class CousrseService extends Http {
 
     static async postCourse(data) {
         try {
-            const res = await this.post("course", data)
-            return res;
-
+            const response = await this.post("course", data)
+            return response;
         } catch (error) {
-            console.error(error.message)
+            console.log(error.message);
         }
     }
 }

@@ -1,4 +1,5 @@
-import Http from "./http";
+import { Http } from "/src/service/http.js?t=1713265995646";
+
 
 export class UserService extends Http {
     static async createUser(data) {
@@ -6,7 +7,7 @@ export class UserService extends Http {
             const res = await this.post("user", data)
             return res;
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async updateUser(data) {
@@ -14,7 +15,7 @@ export class UserService extends Http {
             const res = await this.put("user", data)
             return res.data;
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async getUser() {
@@ -22,7 +23,7 @@ export class UserService extends Http {
             const res = await this.get("user")
             return res;
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async loginUser(data) {
@@ -30,7 +31,7 @@ export class UserService extends Http {
             const res = await this.post("user/login", data)
             return res;
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
     }
 
@@ -39,7 +40,7 @@ export class UserService extends Http {
             const res = await this.get("refreshToken")
             return res;
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 }

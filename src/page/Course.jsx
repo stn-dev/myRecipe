@@ -2,19 +2,10 @@ import React from 'react'
 import Texte from '../component/text/text'
 import { BtnCourseCreation, BtnPrivate, ButtonWhite } from '../component/button/button'
 import RatingTest from '../component/stars component/Rating'
-// import { UserService } from '../service/userService'
+
 
 function Course() {
-    // const userService = new UserService();
 
-    // const handleSubmit = async () => {
-    //     try {
-    //         const res = await UserService.createUser(data);
-    //         return res;
-    //     } catch (error) {
-    //         throw Error(error.message);
-    //     }
-    // }
     const arrCourse = [1, 2, 3]
     return (
         <div className="course-page">

@@ -1,14 +1,14 @@
-import axios from "axios";
+
 import axiosInstance from "./axios";
 
 
-export default class Http {
+export class Http {
     static async get(url) {
         try {
             const res = await axiosInstance.get(url)
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 
@@ -18,7 +18,7 @@ export default class Http {
             const res = await axiosInstance.post(url, data);
             return res;
         } catch (error) {
-            throw new Error(error.message);
+            console.log(error.message);
         }
     }
 
@@ -28,7 +28,7 @@ export default class Http {
             const res = await axiosInstance.patch(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 
@@ -38,7 +38,7 @@ export default class Http {
             const res = await axiosInstance.delete(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 
@@ -47,7 +47,7 @@ export default class Http {
             const res = await axiosInstance.put(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 }
