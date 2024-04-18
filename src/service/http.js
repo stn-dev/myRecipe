@@ -1,8 +1,7 @@
 
 import axiosInstance from "./axios";
 
-
-export class Http {
+class Http {
     static async get(url) {
         try {
             const res = await axiosInstance.get(url)
@@ -51,3 +50,7 @@ export class Http {
         }
     }
 }
+
+class Test { }
+
+export { Http, Test }

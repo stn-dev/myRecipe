@@ -4,8 +4,10 @@ import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
 import { CourseService } from '../../service/courseService'
+import axios from 'axios'
+import axiosInstance from '../../service/axios'
 
-export const courseCreationAction = async ({ request }) => {
+export const CourseCreationAction = async ({ request }) => {
     try {
         const course = await request.formData()
         const data = Object.fromEntries(course)
@@ -14,20 +16,22 @@ export const courseCreationAction = async ({ request }) => {
             author: localStorage.getItem("id")
         }
 
-        const isData = { ...data, ...id }
+        const datas = { ...data, ...id }
+        console.log(datas)
 
-        console.log(isData)
+        const creatCourse = await CourseService.postCourse(datas)
+        console.log(creatCourse)
 
-        const setCourse = await CourseService.postCourse(isData)
-        console.log(setCourse)
+        // const courses = await axios.post("http://localhost:4400/api/course", {
+        //     headers: Authorisation = `Bearer ${localStorage.getItem("refreshToken")}`,
+        //     body: datas
+        // })
 
-        return null;
+        return datas;
 
     } catch (error) {
-        console.log(error.message)
+        console.log(`il y a une erreur ${error.message}`)
     }
-
-
 }
 
 function CourseCreation() {

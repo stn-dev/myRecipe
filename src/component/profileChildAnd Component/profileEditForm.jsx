@@ -3,10 +3,31 @@ import { Form } from 'react-router-dom'
 import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
+import { UserService } from '../../service/userService'
+
+export const profilEditAction = async ({ request }) => {
+    try {
+        const datas = await request.formData()
+        const data = Object.fromEntries(datas)
+        console.log(data)
+
+        const putUser = await UserService.updateUser(data)
+        console.log(putUser)
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const profilEditLoader = () => {
+
+}
 
 function ProfileEditForm() {
     return (
-        <Form className='profilFormsContainer'>
+        <Form
+            method='PUT'
+            className='profilFormsContainer'>
             <Texte
                 content={"My personal information"}
                 as={"h3"}
@@ -17,8 +38,8 @@ function ProfileEditForm() {
 
                 <div className="leftSideProfilForm">
                     <InputInfos
-                        name={"Pseudo"}
-                        placeholder={"Pseudo*"}
+                        name={"username"}
+                        placeholder={"username*"}
                         classe={"inputInfoContainer"}
                     />
                     <InputInfos
@@ -45,13 +66,13 @@ function ProfileEditForm() {
                     />
                 </div>
 
-                {/* ritgth side of the profil form  */}
+                {/*  rigth side of the profil form  */}
 
 
                 <div className="rigthSideProfilForm">
                     <InputInfos
                         type={"email"}
-                        name={"E-mail"}
+                        name={"email"}
                         placeholder={"E-mail*"}
                         classe={"inputInfoContainer"}
                     />

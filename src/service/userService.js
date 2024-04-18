@@ -1,5 +1,54 @@
-import { Http } from "/src/service/http.js?t=1713265995646";
+// import { Http, Test } from "./http"
 
+class Http {
+    static async get(url) {
+        try {
+            const res = await axiosInstance.get(url)
+            return res
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+
+    static async post(url, data) {
+        try {
+            const res = await axiosInstance.post(url, data);
+            return res;
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+
+    static async patch(url, data) {
+        try {
+            const res = await axiosInstance.patch(url, data);
+            return res
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+
+    static async delete(url, data) {
+        try {
+            const res = await axiosInstance.delete(url, data);
+            return res
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    static async put(url, data) {
+        try {
+            const res = await axiosInstance.put(url, data);
+            return res
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
 
 export class UserService extends Http {
     static async createUser(data) {

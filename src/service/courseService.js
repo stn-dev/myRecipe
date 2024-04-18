@@ -1,5 +1,4 @@
-import { Http } from "./http";
-
+import { Http } from "./http.js";
 
 export class CourseService extends Http {
     static async getCourse() {
@@ -14,8 +13,8 @@ export class CourseService extends Http {
 
     static async postCourse(data) {
         try {
-            const response = await this.post("course", data)
-            return response;
+            const res = await this.post("course", data)
+            return res;
         } catch (error) {
             console.log(error.message);
         }

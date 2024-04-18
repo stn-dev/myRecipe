@@ -18,7 +18,7 @@ export const singUpAction = async ({ request }) => {
 
         console.log(signUpUser)
 
-        return signUpUser;
+        return redirect("/login");
 
     } catch (error) {
         console.log(error.message)

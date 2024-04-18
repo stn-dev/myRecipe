@@ -19,7 +19,7 @@ import Lunch from './page/meal planner children/Lunch'
 import Dinner from './page/meal planner children/Dinner'
 import Snack from './page/meal planner children/Snack'
 import Logo from './component/logo/logo'
-import CourseCreation, { courseCreationAction } from './page/course creation /CourseCreation'
+import CourseCreation, { CourseCreationAction } from './page/course creation /CourseCreation'
 import ProfilPage from './page/ProfilPage'
 import CullinaryPreferenceForm from './component/profileChildAnd Component/CullinaryPreferenceForm'
 import CullinarryPreference from './page/profilPageChild/CulinarryPreference'
@@ -28,6 +28,7 @@ import AdminPage from './page/AdminPage'
 import NavbarForAdmin from './layout/navbar/NavbarForAdmin'
 import ErrorPage from './page/ErrorPage'
 import Auth from './component/route guard/Auth'
+import { profilEditAction } from './component/profileChildAnd Component/profileEditForm'
 
 
 const Root = () => {
@@ -107,13 +108,17 @@ const router = createBrowserRouter(
         <Route
           path='/CourseCreation'
           element={<CourseCreation />}
-          action={courseCreationAction}
+          action={CourseCreationAction}
         />
 
         <Route path='/GUI' element={<GUI />} />
 
         {/* profil page and children  */}
-        <Route path='/profil' element={<ProfilPage />} />
+        <Route
+          path='/profil'
+          element={<ProfilPage />}
+          action={profilEditAction}
+        />
         <Route
           path='/profilCullinaryPreference'
           element={<CullinarryPreference />}
