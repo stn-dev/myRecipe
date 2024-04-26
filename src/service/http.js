@@ -51,6 +51,5 @@ class Http {
     }
 }
 
-class Test { }
 
-export { Http, Test }
+export { Http }
