@@ -8,6 +8,10 @@
     color: #424659 ;
 }
 
+// <ClockLoader color="#F27830" />
+// <PacmanLoader color="#F27830" />
+// <BeatLoader color="#36d7b7" />
+
         // all the model    
 
 %flex{
@@ -429,16 +433,18 @@ font-weight: 400;
         .profil{
             width: 40px;
             height: 40px;
-            background-image: url(./assets/profil.svg);
-            background-repeat: no-repeat;
-            background-size: cover;
+            border-radius: 100%;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+            }
             &:hover {
                 cursor: pointer;
             }
         }
         .notification{
             @extend .profil;
-            background-image: url(./assets/notification.svg);
         }
         button {
             @extend %btnWhite;
@@ -583,6 +589,24 @@ font-weight: 400;
         place-content: end;
     }
  }   
+
+
+        // caroussel component 
+
+.carouselContainer {
+    width: 1200px;
+    height: 230px;
+    .carousel {
+        width: 260px;
+        height: 230px;
+        border-radius: 30px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
  
 
         // PAGE INTEGRATION //
@@ -606,6 +630,7 @@ font-weight: 400;
     margin: 50px auto;
     display: grid;
     grid-template-columns: repeat(2 , 1fr);
+    position: relative;
     .login-form {
         h2 {
             font-size: 30px;
@@ -863,6 +888,10 @@ font-weight: 400;
             align-items: start;
             gap: 15px;
             position: relative;
+            transition: all 0.3s ease;
+            &:hover {
+                transform: scale(1.075);
+            }
             h2 {
                 width: 300px;
             }
@@ -1421,6 +1450,39 @@ font-weight: 400;
     @extend %flex;
     flex-direction: column;
     gap: 14px;
+    .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        overflow: hidden;
+        box-shadow: 2px 3px 0px 1px #00000026;
+        &:hover {
+            cursor: pointer;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    input {
+        display: none;
+    }
+    button {
+        width: 150px;
+        height: 30px;
+        @extend %primBack;
+        @extend %fontNav;
+        color: white;
+        border-radius: 20px;
+        border: 2px solid white;
+        transition: all 0.3s ease;
+        &:hover {
+            cursor: pointer;
+        }
+        &:active {
+            border-color: black;
+        }
+    }
     h3 {
         font-size: 14px;
         font-weight: 600;
@@ -1583,17 +1645,16 @@ font-weight: 400;
 
 .adminPage {
     width: 100%;
-    height: 1100px;
+    min-height: 1100px;
     padding: 0 20px;
-    @extend %flex;
+    display: flex;
     justify-content: flex-start;
-
 
         // sidebar 
 
     .sidebarAdminPage {
         width: 345px;
-        height: 1000px;
+        min-height: 1000px;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -1608,7 +1669,7 @@ font-weight: 400;
         }
         .mainMenu {
             width: 100%;
-            height: 700px;
+            min-height: 700px;
             padding: 0 10px;
             display: grid;
             grid-template-rows: repeat(12, 1fr);
@@ -1628,7 +1689,7 @@ font-weight: 400;
 
 .mainAdminPage {
     width: 100%;
-    height: 1085px;
+    min-height: 1085px;
     padding: 10px;
     background-color: rgb(245, 245, 245);
     display: flex;
@@ -1663,6 +1724,16 @@ font-weight: 400;
             }
         }
 
+    }
+
+    .userInfosContainer {
+        width: 100%;
+        min-height: 1030px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: 20px;
     }
 
     .userInfos {

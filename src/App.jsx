@@ -8,8 +8,8 @@ import Contact from './page/Contact'
 import Course from './page/Course'
 import NavbarWhithSearch from './layout/navbar/NavbarWhithSearch'
 import GUI from './page/GUI'
-import LoginPage from './page/LoginPage'
-import SingUpPage from './page/SingUpPage'
+import LoginPage, { loginaction } from './page/LoginPage'
+import SingUpPage, { singUpAction } from './page/SingUpPage'
 import NavbarForLoggedInWithSearch from './layout/navbar/NavbarForLoggedInWithSearch'
 import NavBar from './layout/navbar/NavBarNoSearch'
 import Footer from './layout/navbar/footer/Footer'
@@ -24,9 +24,11 @@ import ProfilPage from './page/ProfilPage'
 import CullinaryPreferenceForm from './component/profileChildAnd Component/CullinaryPreferenceForm'
 import CullinarryPreference from './page/profilPageChild/CulinarryPreference'
 import MyRecipePage from './page/profilPageChild/MyRecipePage'
-import AdminPage from './page/AdminPage'
+import AdminPage, { adminLoader } from './page/AdminPage'
 import NavbarForAdmin from './layout/navbar/NavbarForAdmin'
 import ErrorPage from './page/ErrorPage'
+import IsAuth from './component/auth/IsAuth'
+import ProfileEditForm, { profilEditAction } from './component/profileChildAnd Component/profileEditForm'
 
 
 const Root = () => {
@@ -34,8 +36,8 @@ const Root = () => {
   // test route guard 
   const navigate = useNavigate()
   const [guard, setguard] = useState(false)
-
   const { pathname } = useLocation()
+  const token = localStorage.getItem("token")
 
 
   let footer = true;
@@ -60,16 +62,11 @@ const Root = () => {
     <>
       <header>
         <nav>
+
           {
-            pathname == "/admin" ? <NavbarForAdmin />
-              :
-              (pathname == "/profil" ? <NavbarForLoggedInWithSearch />
-                :
-                (pathname == "/categorie" ?
-                  <NavBar />
-                  : (guiNav && <NavbarWhithSearch
-                    logo={<Logo />} />)))
+            token ? <NavbarForLoggedInWithSearch /> : <NavbarWhithSearch />
           }
+
         </nav>
       </header>
       <main>
@@ -87,43 +84,69 @@ const router = createBrowserRouter(
       errorElement={<ErrorPage />}
     >
       <Route index element={<Home />} />
-      <Route path='/categorie' element={<Categories />} />
 
-      {/* meal planner page and children page  */}
-      <Route path='/mealPlanner' element={<MealPlanner />} />
-      <Route path='/mealPlannerBreakFast' element={<BreakFast />} />
-      <Route path='/mealPlannerLunch' element={<Lunch />} />
-      <Route path='/mealPlannerDinner' element={<Dinner />} />
-      <Route path='/mealPlannerSnack' element={<Snack />} />
+      <Route path='/' element={<IsAuth />} >
 
-
-      <Route path='/about' element={<About />} />
-      <Route path='/contact' element={<Contact />} />
+        {/* meal planner page and children page  */}
+        <Route path='/mealPlanner' element={<MealPlanner />} />
+        <Route path='/mealPlannerBreakFast' element={<BreakFast />} />
+        <Route path='/mealPlannerLunch' element={<Lunch />} />
+        <Route path='/mealPlannerDinner' element={<Dinner />} />
+        <Route path='/mealPlannerSnack' element={<Snack />} />
 
 
-      {/* course page and children  */}
-      <Route path='/course' element={<Course />} />
-      <Route path='/CourseCreation' element={<CourseCreation />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
 
 
-      <Route path='/GUI' element={<GUI />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/singUp' element={<SingUpPage />} />
+        {/* course page and children  */}
+        <Route path='/course' element={<Course />} />
+        <Route path='/CourseCreation' element={<CourseCreation />} />
 
 
-      {/* profil page and children  */}
-      <Route path='/profil' element={<ProfilPage />} />
+        <Route path='/GUI' element={<GUI />} />
+
+        {/* profil page and children  */}
+        <Route path='/profil' element={<ProfilPage />}>
+
+          <Route
+            index
+            element={<ProfileEditForm />}
+            action={profilEditAction}
+          />
+          <Route
+            path='cullinaryPreference'
+            element={<CullinarryPreference />}
+          />
+          <Route
+            path='myRecipe'
+            element={<MyRecipePage />}
+          />
+        </Route>
+
+
+        <Route path='/categorie' element={<Categories />} />
+
+        <Route
+          path='/admin'
+          element={<AdminPage />}
+          loader={adminLoader}
+        />
+
+      </Route>
+
+
       <Route
-        path='/profilCullinaryPreference'
-        element={<CullinarryPreference />}
+        path='/login'
+        element={<LoginPage />}
+        action={loginaction}
       />
       <Route
-        path='/profilMyRecipe'
-        element={<MyRecipePage />}
+        path='/singUp'
+        element={<SingUpPage />}
+        action={singUpAction}
       />
 
-
-      <Route path='/admin' element={<AdminPage />} />
     </Route>
   )
 )

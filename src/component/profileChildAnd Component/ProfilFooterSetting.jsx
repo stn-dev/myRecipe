@@ -1,7 +1,26 @@
 import React from 'react'
 import Texte from '../../component/text/text'
+import { UserService } from '../../service/userService'
+import { useNavigate } from 'react-router-dom'
 
 function ProfilFooterSetting() {
+    const navigate = useNavigate()
+    const id = localStorage.getItem("id")
+
+
+    const handleclick = async () => {
+        const confirmation = prompt('Are you sure to delete your account?  yes/no')
+        if (confirmation == "yes".toLocaleLowerCase()) {
+            const deleteUser = await UserService.deleteUser(id)
+            console.log(deleteUser)
+
+            if (deleteUser.status == 200) {
+                localStorage.clear()
+                navigate("/singUp")
+            }
+        }
+    }
+
     return (
         <div className="profilSettingFooterContainer">
             <div className="incitation">
@@ -10,10 +29,11 @@ function ProfilFooterSetting() {
                 </p>
             </div>
             <div className="setting">
-                <Texte
-                    content={"Delete my account"}
-                    as={"h3"}
-                />
+                <h3
+                    onClick={handleclick}
+                >
+                    delete my account
+                </h3>
                 <Texte
                     content={"Cookies Settings"}
                     as={"h4"}

@@ -17,9 +17,9 @@ export class UserService extends Http {
             console.log(error.message);
         }
     }
-    static async getAllUsers(data) {
+    static async getAllUsers() {
         try {
-            const res = await this.get(data)
+            const res = await this.get("user")
             return res;
         } catch (error) {
             console.log(error.message);
@@ -33,9 +33,17 @@ export class UserService extends Http {
             console.log(error.message);
         }
     }
-    static async deleteUser(id, data) {
+    static async deleteUser(id) {
         try {
-            const res = await this.delete(`user/${id}`, data)
+            const res = await this.delete(`user/${id}`)
+            return res;
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    static async createAvatar(data) {
+        try {
+            const res = await this.post(`image`, data)
             return res;
         } catch (error) {
             console.log(error.message);

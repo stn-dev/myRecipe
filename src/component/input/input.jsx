@@ -28,7 +28,7 @@ export function InputEmail() {
 
 // classe => inputInfoContainer / inputFormContainer / inputFormName
 
-export function InputInfos({ logo, type, name, placeholder, classe }) {
+export function InputInfos({ logo, type, name, placeholder, classe, value }) {
     const [image, setImage] = useState(logo)
     const [genre, setGenre] = useState(type)
 
@@ -54,6 +54,7 @@ export function InputInfos({ logo, type, name, placeholder, classe }) {
                 type={genre}
                 name={name}
                 placeholder={placeholder}
+                defaultValue={value}
             />
         </div>
     )

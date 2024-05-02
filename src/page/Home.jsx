@@ -3,6 +3,7 @@ import Texte from '../component/text/text'
 import { BtnPrivate, ButtonWhite } from '../component/button/button'
 import { InputEmail } from '../component/input/input'
 import RatingTest from '../component/stars component/Rating'
+import Carousel from '../component/carousel/Carousel'
 
 function Home() {
     return (
@@ -282,19 +283,7 @@ function Home() {
                     content={"Latest recipe"}
                     as={"h3"}
                 />
-                <div className="recipes">
-                    <img
-                        src="src/assets/logo/arrowLeftCircle.svg"
-                        className='left'
-                    />
-                    <img
-                        src="src/assets/logo/arrowRigthCircle.svg" className='rigth'
-                    />
-                    <img src="src/assets/picture/lastRecipe1.svg" alt="" />
-                    <img src="src/assets/picture/lastRecipe1.svg" alt="" />
-                    <img src="src/assets/picture/lastRecipe1.svg" alt="" />
-                    <img src="src/assets/picture/lastRecipe1.svg" alt="" />
-                </div>
+                <Carousel />
             </div>
         </div>
     )

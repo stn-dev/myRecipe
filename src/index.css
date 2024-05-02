@@ -8,7 +8,7 @@
   color: #424659;
 }
 
-.sidebarAdminComponent, .errorPage .messageContainer .errorMessage, .errorPage .messageContainer p, .errorPage .messageContainer, .errorPage, .adminPage .mainAdminPage .userInfos .hiddenPart .buttonOption, .adminPage .mainAdminPage .userInfos .hiddenPart, .adminPage .mainAdminPage .userInfos .profilShown, .adminPage .mainAdminPage .userInfos, .adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage button, .adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage, .adminPage .mainAdminPage .headerAdminPage .title, .adminPage, .myrecioeContainer .submitRecipe, .myrecioeContainer .selection, .myrecioeContainer .categorieBar, .myrecioeContainer .section-bar, .myrecioeContainer h3, .cullinaryPrefFormContainer .submitCullinaryForm, .cullinaryPrefFormContainer .cullinaryForm, .cullinaryPrefFormContainer .leftSideCullinaryForm, .cullinaryPrefFormContainer .rigthSideCullinaryForm, .cullinaryPrefFormContainer .bothSideContainer, .profilPageNavigation .navigationItems .navigationItem, .profilPageNavigation .navigationItems, .profilPageNavigation h3, .profilPictureContainer, .profilSettingFooterContainer .setting, .profilFormsContainer .formContainer, .profilFormsContainer h3, .profilFormsContainer, .profilPage, .myRecipePage, .cullinarryPreferencePage, .courseCreationPage .submitCourseForm, .courseCreationPage .courseForms .rigthSide .add, .courseCreationPage .courseForms .leftSide, .courseCreationPage .courseForms .rigthSide, .courseCreationPage .courseForms, .courseCreationPage h2, .course-page .courses-container, .course-page .private-public-course .seeMoreCourse, .course-page .private-public-course .courseCreationBar div, .course-page .sidebar-course .diary button, .course-page .hero-section-course .coocking-lesson, .mealPlnnerFormContainer .submitForm, .mealPlnnerFormContainer, .mealPlannerNav .navigation, .meal-planner-page .explanation, .categories-page .categories-container, .categories-page .search-bar div, .categories-page .search-bar, .home-page .latest-recipe-container .recipes, .home-page .coletion-container .coletions .colection div, .home-page .coletion-container .coletions .colection, .home-page .recipe-book-container .mini-form form, .home-page .recipe-book-container .mini-form, .home-page .popular-categories-section .categories, .home-page .popular-categories-section, .home-page .private-public-menu .salt-food .item, .home-page .private-public-menu .sweet-food .item, .home-page .private-public-menu .salt-food, .home-page .private-public-menu .sweet-food, .home-page .asidebar-container .filter-recipes, .home-page .side-main-container, .home-page .hero-section .hero-title, .singUp-page form div, .login-page .login-form form, .singUp-page .login-form form, .login-page .login-form, .singUp-page .login-form, .component, .footer-section .social-media, .social, .NavForAdmin .admin-infos .role, .NavForAdmin .admin-infos, .NavForAdmin .notif, .NavForAdmin, .User-nav .divBtn, .login-nav .divBtn, .loggedInNav .divBtn, .loggedNavWithSearch .divBtn, .loggedInNav .profil-container, .loggedNavWithSearch .profil-container, .User-nav .navLinkUser li, .login-nav .navLinkUser li, .loggedInNav .navLinkUser li, .loggedNavWithSearch .navLinkUser li, .User-nav .navLinkUser, .login-nav .navLinkUser, .loggedInNav .navLinkUser, .loggedNavWithSearch .navLinkUser, .User-nav, .login-nav, .loggedInNav, .loggedNavWithSearch, .googleConnect, .btnCategorieWhite, .private, .public, .btnCategorieOrange, .courseCreation, .course-page .private-public-course .seeMoreCourse button, .loggedInNav .profil-container button, .loggedNavWithSearch .profil-container button, .User-nav .divBtn .singInBtn, .login-nav .divBtn .singInBtn, .loggedInNav .divBtn .singInBtn, .loggedNavWithSearch .divBtn .singInBtn, .loggedInNav .profil-container .singInBtn, .loggedNavWithSearch .profil-container .singInBtn, .orange-btn, .User-nav .divBtn .loginBtn, .login-nav .divBtn .loginBtn, .loggedInNav .divBtn .loginBtn, .loggedNavWithSearch .divBtn .loginBtn, .loggedInNav .profil-container .loginBtn, .loggedNavWithSearch .profil-container .loginBtn, .white-btn {
+.sidebarAdminComponent, .errorPage .messageContainer .errorMessage, .errorPage .messageContainer p, .errorPage .messageContainer, .errorPage, .adminPage .mainAdminPage .userInfos .hiddenPart .buttonOption, .adminPage .mainAdminPage .userInfos .hiddenPart, .adminPage .mainAdminPage .userInfos .profilShown, .adminPage .mainAdminPage .userInfos, .adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage button, .adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage, .adminPage .mainAdminPage .headerAdminPage .title, .myrecioeContainer .submitRecipe, .myrecioeContainer .selection, .myrecioeContainer .categorieBar, .myrecioeContainer .section-bar, .myrecioeContainer h3, .cullinaryPrefFormContainer .submitCullinaryForm, .cullinaryPrefFormContainer .cullinaryForm, .cullinaryPrefFormContainer .leftSideCullinaryForm, .cullinaryPrefFormContainer .rigthSideCullinaryForm, .cullinaryPrefFormContainer .bothSideContainer, .profilPageNavigation .navigationItems .navigationItem, .profilPageNavigation .navigationItems, .profilPageNavigation h3, .profilPictureContainer, .profilSettingFooterContainer .setting, .profilFormsContainer .formContainer, .profilFormsContainer h3, .profilFormsContainer, .profilPage, .myRecipePage, .cullinarryPreferencePage, .courseCreationPage .submitCourseForm, .courseCreationPage .courseForms .rigthSide .add, .courseCreationPage .courseForms .leftSide, .courseCreationPage .courseForms .rigthSide, .courseCreationPage .courseForms, .courseCreationPage h2, .course-page .courses-container, .course-page .private-public-course .seeMoreCourse, .course-page .private-public-course .courseCreationBar div, .course-page .sidebar-course .diary button, .course-page .hero-section-course .coocking-lesson, .mealPlnnerFormContainer .submitForm, .mealPlnnerFormContainer, .mealPlannerNav .navigation, .meal-planner-page .explanation, .categories-page .categories-container, .categories-page .search-bar div, .categories-page .search-bar, .home-page .latest-recipe-container .recipes, .home-page .coletion-container .coletions .colection div, .home-page .coletion-container .coletions .colection, .home-page .recipe-book-container .mini-form form, .home-page .recipe-book-container .mini-form, .home-page .popular-categories-section .categories, .home-page .popular-categories-section, .home-page .private-public-menu .salt-food .item, .home-page .private-public-menu .sweet-food .item, .home-page .private-public-menu .salt-food, .home-page .private-public-menu .sweet-food, .home-page .asidebar-container .filter-recipes, .home-page .side-main-container, .home-page .hero-section .hero-title, .singUp-page form div, .login-page .login-form form, .singUp-page .login-form form, .login-page .login-form, .singUp-page .login-form, .component, .footer-section .social-media, .social, .NavForAdmin .admin-infos .role, .NavForAdmin .admin-infos, .NavForAdmin .notif, .NavForAdmin, .User-nav .divBtn, .login-nav .divBtn, .loggedInNav .divBtn, .loggedNavWithSearch .divBtn, .loggedInNav .profil-container, .loggedNavWithSearch .profil-container, .User-nav .navLinkUser li, .login-nav .navLinkUser li, .loggedInNav .navLinkUser li, .loggedNavWithSearch .navLinkUser li, .User-nav .navLinkUser, .login-nav .navLinkUser, .loggedInNav .navLinkUser, .loggedNavWithSearch .navLinkUser, .User-nav, .login-nav, .loggedInNav, .loggedNavWithSearch, .googleConnect, .btnCategorieWhite, .private, .public, .btnCategorieOrange, .courseCreation, .course-page .private-public-course .seeMoreCourse button, .loggedInNav .profil-container button, .loggedNavWithSearch .profil-container button, .User-nav .divBtn .singInBtn, .login-nav .divBtn .singInBtn, .loggedInNav .divBtn .singInBtn, .loggedNavWithSearch .divBtn .singInBtn, .loggedInNav .profil-container .singInBtn, .loggedNavWithSearch .profil-container .singInBtn, .orange-btn, .User-nav .divBtn .loginBtn, .login-nav .divBtn .loginBtn, .loggedInNav .divBtn .loginBtn, .loggedNavWithSearch .divBtn .loginBtn, .loggedInNav .profil-container .loginBtn, .loggedNavWithSearch .profil-container .loginBtn, .white-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,11 +18,11 @@
   color: #F27830;
 }
 
-.adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage button, .courseCreation, .course-page .private-public-course .seeMoreCourse button {
+.adminPage .mainAdminPage .headerAdminPage .optionSideAdminPage button, .profilPictureContainer button, .courseCreation, .course-page .private-public-course .seeMoreCourse button {
   background-color: #F27830;
 }
 
-.profilSettingFooterContainer .setting h4, .profilSettingFooterContainer .setting h3, .profilSettingFooterContainer .setting, .profilFormsContainer h3, .course-page .sidebar-course .filter-course h3, .course-page .sidebar-course .diary button, .mealPlnnerFormContainer h4, .home-page .coletion-container .coletions .colection div, .home-page .popular-categories-section .categories .categorie h4, .footer-section .footer-link .link ul li, .inputInfoContainer input, .input-mail, .btnCategorieWhite, .private, .public, .btnCategorieOrange, .courseCreation, .course-page .private-public-course .seeMoreCourse button {
+.profilPictureContainer button, .profilSettingFooterContainer .setting h4, .profilSettingFooterContainer .setting h3, .profilSettingFooterContainer .setting, .profilFormsContainer h3, .course-page .sidebar-course .filter-course h3, .course-page .sidebar-course .diary button, .mealPlnnerFormContainer h4, .home-page .coletion-container .coletions .colection div, .home-page .popular-categories-section .categories .categorie h4, .footer-section .footer-link .link ul li, .inputInfoContainer input, .input-mail, .btnCategorieWhite, .private, .public, .btnCategorieOrange, .courseCreation, .course-page .private-public-course .seeMoreCourse button {
   font-size: 16px;
   font-weight: 600;
 }
@@ -399,15 +399,15 @@
 .loggedInNav .profil-container .profil, .loggedNavWithSearch .profil-container .profil, .loggedInNav .profil-container .notification, .loggedNavWithSearch .profil-container .notification {
   width: 40px;
   height: 40px;
-  background-image: url(./assets/profil.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.loggedInNav .profil-container .profil img, .loggedNavWithSearch .profil-container .profil img, .loggedInNav .profil-container .notification img, .loggedNavWithSearch .profil-container .notification img {
+  width: 100%;
+  height: 100%;
 }
 .loggedInNav .profil-container .profil:hover, .loggedNavWithSearch .profil-container .profil:hover, .loggedInNav .profil-container .notification:hover, .loggedNavWithSearch .profil-container .notification:hover {
   cursor: pointer;
-}
-.loggedInNav .profil-container .notification, .loggedNavWithSearch .profil-container .notification {
-  background-image: url(./assets/notification.svg);
 }
 .NavForAdmin {
   width: 100%;
@@ -513,6 +513,21 @@
   place-content: end;
 }
 
+.carouselContainer {
+  width: 1200px;
+  height: 230px;
+}
+.carouselContainer .carousel {
+  width: 260px;
+  height: 230px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.carouselContainer .carousel img {
+  width: 100%;
+  height: 100%;
+}
+
 /* GUI page */
 .component {
   flex-direction: column;
@@ -527,6 +542,7 @@
   margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
 }
 .login-page .login-form, .singUp-page .login-form {
   flex-direction: column;
@@ -732,6 +748,10 @@
   align-items: start;
   gap: 15px;
   position: relative;
+  transition: all 0.3s ease;
+}
+.home-page .coletion-container .coletions .colection:hover {
+  transform: scale(1.075);
 }
 .home-page .coletion-container .coletions .colection h2 {
   width: 300px;
@@ -1148,6 +1168,37 @@
   flex-direction: column;
   gap: 14px;
 }
+.profilPictureContainer .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 2px 3px 0px 1px rgba(0, 0, 0, 0.1490196078);
+}
+.profilPictureContainer .avatar:hover {
+  cursor: pointer;
+}
+.profilPictureContainer .avatar img {
+  width: 100%;
+  height: 100%;
+}
+.profilPictureContainer input {
+  display: none;
+}
+.profilPictureContainer button {
+  width: 150px;
+  height: 30px;
+  color: white;
+  border-radius: 20px;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+.profilPictureContainer button:hover {
+  cursor: pointer;
+}
+.profilPictureContainer button:active {
+  border-color: black;
+}
 .profilPictureContainer h3 {
   font-size: 14px;
   font-weight: 600;
@@ -1276,13 +1327,14 @@
 /* admin page  */
 .adminPage {
   width: 100%;
-  height: 1100px;
+  min-height: 1100px;
   padding: 0 20px;
+  display: flex;
   justify-content: flex-start;
 }
 .adminPage .sidebarAdminPage {
   width: 345px;
-  height: 1000px;
+  min-height: 1000px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1297,7 +1349,7 @@
 }
 .adminPage .sidebarAdminPage .mainMenu {
   width: 100%;
-  height: 700px;
+  min-height: 700px;
   padding: 0 10px;
   display: grid;
   grid-template-rows: repeat(12, 1fr);
@@ -1313,7 +1365,7 @@
 }
 .adminPage .mainAdminPage {
   width: 100%;
-  height: 1085px;
+  min-height: 1085px;
   padding: 10px;
   background-color: rgb(245, 245, 245);
   display: flex;
@@ -1343,6 +1395,15 @@
   border: 0;
   color: white;
   gap: 10px;
+}
+.adminPage .mainAdminPage .userInfosContainer {
+  width: 100%;
+  min-height: 1030px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 20px;
 }
 .adminPage .mainAdminPage .userInfos {
   width: 360px;

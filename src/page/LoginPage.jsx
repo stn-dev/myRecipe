@@ -1,29 +1,104 @@
 import React from 'react'
-import NavbarWhithSearch from '../layout/navbar/NavbarWhithSearch'
 import GoogleConection from '../component/google/GoogleConection'
 import { InputInfos } from '../component/input/input'
 import { ButtonWhite } from '../component/button/button'
-import { Link } from 'react-router-dom'
+import { Form, Link, redirect, useNavigation } from 'react-router-dom'
+import { UserService } from '../service/userService'
+import ClockLoader from "react-spinners/ClockLoader";
+
+export const loginaction = async ({ request }) => {
+    try {
+        const datas = await request.formData()
+        const data = Object.fromEntries(datas)
+        console.log(data)
+
+        const toLog = await UserService.loginUser(data)
+        console.log(toLog)
+        if (toLog?.status == 200 || toLog?.status == 201) {
+
+            const username = toLog.data.user.username
+            const email = toLog.data.user.email
+            const id = toLog.data.user._id
+            const token = toLog.data.token
+            const refreshToken = toLog.data.refreshToken
+            const avatar = toLog.data.user.avatar?.nameHashed
+
+            if (username) {
+                localStorage.setItem("username", username)
+            }
+            if (email) {
+                localStorage.setItem("email", email)
+            }
+            if (id) {
+                localStorage.setItem("id", id)
+            }
+            if (token) {
+                localStorage.setItem("token", token)
+            }
+            if (refreshToken) {
+                localStorage.setItem("refreshToken", refreshToken)
+            }
+            if (avatar) {
+                localStorage.setItem("avatar", `http://localhost:4400/${avatar}`)
+            }
+
+            return redirect('/')
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 function LoginPage() {
+    const navigation = useNavigation()
+    let opacity = false
+    const override = {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "#F27830",
+        position: "absolute",
+        top: "40%",
+        left: "42%"
+    };
+
+    if (navigation.state === "submitting") {
+        opacity = true
+    }
+
     return (
         <div className="login-page">
-            <img src="src/assets/picture/loginImage.svg" alt="" />
-            <div className="login-form">
+            <img
+                style={{ opacity: opacity && 0.5 }}
+                src="src/assets/picture/loginImage.svg"
+            />
+            <ClockLoader
+                color={"#F27830"}
+                loading={opacity && true}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            <div
+                style={{ opacity: opacity && 0.5 }}
+                className="login-form"
+            >
                 <h2>Welcome back</h2>
                 <GoogleConection />
                 <h5>Or</h5>
-                <form >
+                <Form
+                    method='POST'
+                >
                     <InputInfos
-                        type={"email"}
-                        name={"mail"}
-                        placeholder={"E-mail"}
+                        type={"text"}
+                        name={"username"}
+                        placeholder={"username"}
                         classe={"inputFormContainer"} />
 
                     <InputInfos
                         logo={"src/assets/logo/hidePassword.svg"}
                         type={"password"}
-                        name={"passsword"}
+                        name={"password"}
                         placeholder={"password"}
                         classe={"inputFormContainer"} />
                     <p>Forget passsword?</p>
@@ -38,8 +113,7 @@ function LoginPage() {
                             </span>
                         </Link>
                     </h6>
-                </form>
-
+                </Form>
             </div>
         </div>
     )

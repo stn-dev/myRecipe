@@ -36,13 +36,14 @@ axiosInstance.interceptors.response.use(
 
         if (status == 401) {
             alert("user doesn't exist")
+            return null
         }
 
         if (status == 500) {
             alert(`${error.response.message}`)
         }
 
-        return Promise.resolve
+        return Promise.reject()
     }
 )
 

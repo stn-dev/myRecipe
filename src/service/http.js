@@ -12,6 +12,7 @@ export class Http {
     static async post(url, data) {
         try {
             const res = await axiosInstance.post(url, data);
+            return res
         } catch (error) {
             console.error(error.message);
         }
@@ -19,6 +20,7 @@ export class Http {
     static async put(url, data) {
         try {
             const res = await axiosInstance.put(url, data);
+            return res
         } catch (error) {
             console.error(error.message);
         }
@@ -26,6 +28,7 @@ export class Http {
     static async delete(url, data) {
         try {
             const res = await axiosInstance.delete(url, data);
+            return res
         } catch (error) {
             console.error(error.message);
         }
