@@ -7,7 +7,7 @@ export class CourseService extends Http {
             return res;
 
         } catch (error) {
-            console.error(error.message)
+            console.log(error.message)
         }
     }
 

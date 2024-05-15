@@ -19,7 +19,7 @@ import Lunch from './page/meal planner children/Lunch'
 import Dinner from './page/meal planner children/Dinner'
 import Snack from './page/meal planner children/Snack'
 import Logo from './component/logo/logo'
-import CourseCreation from './page/course creation /CourseCreation'
+import CourseCreation, { courseAction } from './page/course creation /CourseCreation'
 import ProfilPage from './page/ProfilPage'
 import CullinaryPreferenceForm from './component/profileChildAnd Component/CullinaryPreferenceForm'
 import CullinarryPreference from './page/profilPageChild/CulinarryPreference'
@@ -101,7 +101,11 @@ const router = createBrowserRouter(
 
         {/* course page and children  */}
         <Route path='/course' element={<Course />} />
-        <Route path='/CourseCreation' element={<CourseCreation />} />
+        <Route
+          path='/CourseCreation'
+          element={<CourseCreation />}
+        // action={courseAction}
+        />
 
 
         <Route path='/GUI' element={<GUI />} />

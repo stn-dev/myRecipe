@@ -2,13 +2,14 @@ import React from 'react'
 import GoogleConection from '../component/google/GoogleConection'
 import { InputInfos } from '../component/input/input'
 import { ButtonWhite } from '../component/button/button'
-import { Form, Link, redirect, useNavigation } from 'react-router-dom'
+import { Form, Link, redirect, useActionData, useNavigation } from 'react-router-dom'
 import { UserService } from '../service/userService'
 import ClockLoader from "react-spinners/ClockLoader";
 
 export const loginaction = async ({ request }) => {
     try {
         const datas = await request.formData()
+
         const data = Object.fromEntries(datas)
         console.log(data)
 
@@ -44,12 +45,22 @@ export const loginaction = async ({ request }) => {
 
             return redirect('/')
         }
+        if (toLog?.status == 401) {
+            alert("user doesn't exist")
+            return null
+        }
+        if (toLog?.status == 401) {
+            alert("server problem")
+            return null
+        }
+
     } catch (error) {
         console.log(error.message)
     }
 }
 
 function LoginPage() {
+
     const navigation = useNavigation()
     let opacity = false
     const override = {
@@ -93,15 +104,20 @@ function LoginPage() {
                         type={"text"}
                         name={"username"}
                         placeholder={"username"}
-                        classe={"inputFormContainer"} />
+                        classe={"inputFormContainer"}
+                    // styles={{ borderColor: `${empty ? "red" : "black"}` }}
+                    />
 
                     <InputInfos
                         logo={"src/assets/logo/hidePassword.svg"}
                         type={"password"}
                         name={"password"}
                         placeholder={"password"}
-                        classe={"inputFormContainer"} />
+                        classe={"inputFormContainer"}
+                    />
+
                     <p>Forget passsword?</p>
+
                     <ButtonWhite
                         type={"submit"}
                         content={"Log in"}

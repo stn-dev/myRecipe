@@ -6,7 +6,7 @@ export class Http {
             const res = await axiosInstance.get(url)
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async post(url, data) {
@@ -14,7 +14,7 @@ export class Http {
             const res = await axiosInstance.post(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async put(url, data) {
@@ -22,7 +22,7 @@ export class Http {
             const res = await axiosInstance.put(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
     static async delete(url, data) {
@@ -30,7 +30,7 @@ export class Http {
             const res = await axiosInstance.delete(url, data);
             return res
         } catch (error) {
-            console.error(error.message);
+            console.log(error.message);
         }
     }
 }

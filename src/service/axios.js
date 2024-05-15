@@ -19,31 +19,37 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     (res) => res,
     async (error) => {
-        const refresh = localStorage.getItem("refreshToken")
-        const status = error.response.status
+        try {
+            const refresh = localStorage.getItem("refreshToken")
+            const status = error?.response ? error.response.status : null
 
-        if (status == 401 && refresh) {
-            const token = axios.get("http://localhost:4400/api/refreshToken", {
-                headers: {
-                    "Authorization": `Bearer ${refresh}`
-                }
-            })
-            const newToken = token.token
-            localStorage.setItem("token", newToken)
+            if (status == 401 && refresh) {
+                const token = axios.get("http://localhost:4400/api/refreshToken", {
+                    headers: {
+                        "Authorization": `Bearer ${refresh}`
+                    }
+                })
+                const newToken = token.token
+                localStorage.setItem("token", newToken)
 
-            return axiosInstance(error.config)
+                return axiosInstance(error.config)
+            }
+
+            if (status == 401) {
+                // alert("user doesn't exist")
+                return error.response
+            }
+
+            if (status == 500) {
+                // alert(`${error.response.message}`)
+                return error.response
+            }
+
+            return Promise.reject()
+
+        } catch (error) {
+            console.log(error.message)
         }
-
-        if (status == 401) {
-            alert("user doesn't exist")
-            return null
-        }
-
-        if (status == 500) {
-            alert(`${error.response.message}`)
-        }
-
-        return Promise.reject()
     }
 )
 

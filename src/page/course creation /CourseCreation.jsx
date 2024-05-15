@@ -3,6 +3,52 @@ import { Form, useNavigate } from 'react-router-dom'
 import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
+import { CourseService } from '../../service/courseService'
+
+
+export const courseAction = async ({ request }) => {
+    try {
+        const datas = await request.formData()
+        const title = datas.get("title")
+        const decription = datas.get("decription")
+        const privacy = datas.get("privacy")
+        const link = datas.get("link")
+        const id = { "author": localStorage.getItem("id") }
+        const error = {}
+
+        const data = Object.fromEntries(datas)
+        const allData = { ...data, ...id }
+        console.log(allData)
+
+        if (title === "") {
+            error.title = alert("title section must containe someting")
+            return null
+        }
+        if (decription === "") {
+            error.decription = alert("decription section must containe someting")
+            return null
+        }
+        if (link === "") {
+            error.link = alert("link section must containe someting")
+            return null
+        }
+        if (privacy === "") {
+            error.privacy = alert("privacy section must containe someting")
+            return null
+        }
+
+        const postCourse = await CourseService.postCourse(allData)
+        console.log(postCourse)
+        if (postCourse?.status == 200 || postCourse?.status == 201) {
+            alert("course created")
+            return null
+        }
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 
 function CourseCreation() {
     const navigate = useNavigate()
@@ -35,11 +81,11 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Name "}
+                                content={"title "}
                                 as={"h4"}
                             />
                             <InputInfos
-                                name={"Name "}
+                                name={"title "}
                                 placeholder={"Ex: Chocolate chip cookies"}
                                 classe={"inputInfoContainer"}
                             />
@@ -57,13 +103,13 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Utensil*"}
+                                content={"pricavy*"}
                                 as={"h4"}
                             />
                             <InputInfos
                                 logo={"src/assets/arrowDown.svg"}
-                                name={"Utensil*"}
-                                placeholder={"Ex: pan, bowl ..."}
+                                name={"pricavy"}
+                                placeholder={"private / public"}
                                 classe={"inputInfoContainer"}
                             />
                         </div>
@@ -78,7 +124,7 @@ function CourseCreation() {
                                 as={"h4"}
                             />
                             <textarea
-                                name="Description of course"
+                                name="description"
                                 cols="20"
                                 rows="5"
                             >
@@ -88,11 +134,11 @@ function CourseCreation() {
                         </div>
                         <div className="courseForm">
                             <Texte
-                                content={"Video"}
+                                content={"link"}
                                 as={"h4"}
                             />
                             <InputInfos
-                                name={"Video"}
+                                name={"link"}
                                 placeholder={"Link"}
                                 classe={"inputInfoContainer"}
                             />
