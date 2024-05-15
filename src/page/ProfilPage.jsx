@@ -3,6 +3,7 @@ import ProfilPicture from '../component/profileChildAnd Component/ProfilPicture'
 import ProfilPageNav from '../component/profileChildAnd Component/ProfilPageNav'
 import ProfileEditForm from '../component/profileChildAnd Component/profileEditForm'
 import ProfilFooterSetting from '../component/profileChildAnd Component/ProfilFooterSetting'
+import { Outlet } from 'react-router-dom'
 
 function ProfilPage() {
   return (
@@ -13,7 +14,7 @@ function ProfilPage() {
         registrationDate={"14/02/24"}
       />
       <ProfilPageNav />
-      <ProfileEditForm />
+      <Outlet />
       <ProfilFooterSetting />
     </div>
   )

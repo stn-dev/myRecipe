@@ -7,7 +7,11 @@ export class CourseService extends Http {
             return res;
 
         } catch (error) {
+<<<<<<< HEAD
             console.error(error.message)
+=======
+            console.log(error.message)
+>>>>>>> new-dynamisation
         }
     }
 
@@ -19,4 +23,8 @@ export class CourseService extends Http {
             console.log(error.message);
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> new-dynamisation
 }

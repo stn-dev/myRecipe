@@ -5,10 +5,14 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 export function ButtonWhite({ content, classe, type }) {
     const navigate = useNavigate()
+<<<<<<< HEAD
     const handleClick = () => {
         // if (type == "submit") {
         //     e.preventDefault()
         // }
+=======
+    const handleClick = (e) => {
+>>>>>>> new-dynamisation
         if (content == "Login") {
             navigate("/login")
         } if (content == "Sing up" || content == "Sing in") {

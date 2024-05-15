@@ -10,10 +10,10 @@ function ProfilPageNav() {
         setCondition(!condition)
     }
     const toCullinaryPreference = () => {
-        navigate("/profilCullinaryPreference")
+        navigate("cullinaryPreference")
     }
     const toMyRecipe = () => {
-        navigate("/profilMyRecipe")
+        navigate("myRecipe")
     }
     const toMyPersonalInfos = () => {
         navigate('/profil')

@@ -19,9 +19,17 @@ import CullinaryPreferenceForm from '../component/profileChildAnd Component/Cull
 import RecipeComponent from '../component/profileChildAnd Component/RecipeComponent'
 import RatingTest from '../component/stars component/Rating'
 import ErrorPage from './ErrorPage'
+import { useState, CSSProperties } from "react";
+import ClockLoader from "react-spinners/ClockLoader";
+import Carousel from '../component/carousel/Carousel'
 
 function GUI() {
 
+    const override = {
+        display: "block",
+        margin: "0 auto",
+        borderColor: "red",
+    };
 
     return (
         <div className="component">
@@ -91,6 +99,17 @@ function GUI() {
             <div>
                 <Outlet />
             </div>
+            <br />
+            <ClockLoader
+                color={"#F27830"}
+                loading={true}
+                cssOverride={override}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            <br />
+            <Carousel />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-router-dom'
+import { Form, useActionData } from 'react-router-dom'
 import Texte from '../../component/text/text'
 import { InputInfos } from '../../component/input/input'
 import { ButtonWhite } from '../../component/button/button'
@@ -8,26 +8,65 @@ import { UserService } from '../../service/userService'
 export const profilEditAction = async ({ request }) => {
     try {
         const datas = await request.formData()
+<<<<<<< HEAD
         const data = Object.fromEntries(datas)
         console.log(data)
 
         const putUser = await UserService.updateUser(data)
         console.log(putUser)
+=======
+        const name = datas.get("username")
+        const mail = datas.get("email")
+        const error = {}
+
+        const data = Object.fromEntries(datas)
+        console.log(data)
+
+        if (name === "") {
+            error.name = alert("username section must containe someting")
+            return null
+        }
+        if (mail === "") {
+            error.mail = alert("email section must containe someting")
+            return null
+        }
+
+        const edit = await UserService.editUser(data)
+        console.log(edit)
+        if (edit.status == 200 || edit.status == 201) {
+            alert("your profil was updatade succefully")
+            return null
+        }
+>>>>>>> new-dynamisation
 
     } catch (error) {
         console.log(error.message)
     }
 }
+<<<<<<< HEAD
 
 export const profilEditLoader = () => {
 
 }
+=======
+>>>>>>> new-dynamisation
 
 function ProfileEditForm() {
+
+    const error = useActionData()
+
+    error?.name && error.name
+    error?.mail && error.mail
+
     return (
         <Form
             method='PUT'
+<<<<<<< HEAD
             className='profilFormsContainer'>
+=======
+            className='profilFormsContainer'
+        >
+>>>>>>> new-dynamisation
             <Texte
                 content={"My personal information"}
                 as={"h3"}
@@ -41,6 +80,7 @@ function ProfileEditForm() {
                         name={"username"}
                         placeholder={"username*"}
                         classe={"inputInfoContainer"}
+                        value={localStorage.getItem("username")}
                     />
                     <InputInfos
                         name={"FirstName"}
@@ -75,6 +115,7 @@ function ProfileEditForm() {
                         name={"email"}
                         placeholder={"E-mail*"}
                         classe={"inputInfoContainer"}
+                        value={localStorage.getItem("email")}
                     />
                     <InputInfos
                         logo={"src/assets/logo/hidePassword.svg"}

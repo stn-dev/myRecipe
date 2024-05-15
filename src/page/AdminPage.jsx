@@ -3,14 +3,34 @@ import SidebarComponent from '../component/adminComponent/SidebarComponent'
 import Texte from '../component/text/text'
 import { InputWhite } from '../component/input/input'
 import { ButtonWhite } from '../component/button/button'
+import { UserService } from '../service/userService'
+import { useLoaderData } from 'react-router-dom'
+
+export const adminLoader = async () => {
+    try {
+        const data = await UserService.getAllUsers()
+        const users = data.data.data
+        console.log(users)
+
+        return { users }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 function AdminPage() {
+    const { users } = useLoaderData()
     const [userPart, setUserPart] = useState(false)
+    const arr = []
 
     const showAllPart = () => {
         setUserPart(!userPart)
-
     }
+
+    for (let user of users) {
+        arr.push(user)
+    }
+    console.log(arr)
     return (
         <div className="adminPage">
 
@@ -119,60 +139,70 @@ function AdminPage() {
                     </div>
                 </header>
 
-                <div
-                    className="userInfos"
-                    onClick={showAllPart}
-                >
-                    <div className="profilShown">
-                        <img src="src/assets/adminPageLogo/AdminPic.svg" />
-                        <Texte
-                            content={"john Doe"}
-                            as={"h3"}
-                        />
-                        <Texte
-                            content={" doejohn47@gmail.com"}
-                            as={"h3"}
-                        />
-                    </div>
+                <div className="userInfosContainer">
                     {
-                        userPart &&
+                        arr.map((use, id) => {
+                            return (
+                                <div
+                                    key={id}
+                                    className="userInfos"
+                                    onClick={showAllPart}
+                                >
+                                    <div className="profilShown">
+                                        <img src="src/assets/adminPageLogo/AdminPic.svg" />
+                                        <Texte
+                                            content={use.username}
+                                            as={"h3"}
+                                        />
+                                        <Texte
+                                            content={use.email}
+                                            as={"h3"}
+                                        />
+                                    </div>
+                                    {
+                                        userPart &&
 
-                        <div className="hiddenPart">
-                            <Texte
-                                content={"Registration date:  12/08/21"}
-                                as={"h4"}
-                            />
-                            <Texte
-                                content={"Contact:     +852 456 963"}
-                                as={"h4"}
-                            />
-                            <Texte
-                                content={"Food Preferences"}
-                                as={"h3"}
-                            />
-                            <img src="src/assets/adminPageLogo/AdminFood.svg" />
-                            <img src="src/assets/adminPageLogo/AdminLevel.svg" />
-                            <p>
-                                <img src="src/assets/adminPageLogo/alergic.svg" />
-                                Alergic:
-                                <span>
-                                    Tree Nuts
-                                </span>
-                            </p>
-                            <div className="buttonOption">
-                                <ButtonWhite
-                                    content={"Remove User"}
-                                    classe={"white-btn"}
-                                    type={"reset"}
-                                />
-                                <ButtonWhite
-                                    content={"Disable"}
-                                    classe={"white-btn"}
-                                />
-                            </div>
-                        </div>
+                                        <div className="hiddenPart">
+                                            <Texte
+                                                content={"Registration date:  12/08/21"}
+                                                as={"h4"}
+                                            />
+                                            <Texte
+                                                content={"Contact:     +852 456 963"}
+                                                as={"h4"}
+                                            />
+                                            <Texte
+                                                content={"Food Preferences"}
+                                                as={"h3"}
+                                            />
+                                            <img src="src/assets/adminPageLogo/AdminFood.svg" />
+                                            <img src="src/assets/adminPageLogo/AdminLevel.svg" />
+                                            <p>
+                                                <img src="src/assets/adminPageLogo/alergic.svg" />
+                                                Alergic:
+                                                <span>
+                                                    Tree Nuts
+                                                </span>
+                                            </p>
+                                            <div className="buttonOption">
+                                                <ButtonWhite
+                                                    content={"Remove User"}
+                                                    classe={"white-btn"}
+                                                    type={"reset"}
+                                                />
+                                                <ButtonWhite
+                                                    content={"Disable"}
+                                                    classe={"white-btn"}
+                                                />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            )
+                        })
                     }
                 </div>
+
             </div>
 
         </div>
